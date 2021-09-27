@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import './App.css';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
+import { MoralisProvider } from 'react-moralis';
+import 'font-awesome/css/font-awesome.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
@@ -25,7 +29,12 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Component {...pageProps} />
+          <MoralisProvider
+            appId="yXYoxCHXnLT54ylFTQUM48MmxJWCYnFIKdirLvJU"
+            serverUrl="https://l0ofdtitry2q.usemoralis.com:2053/server"
+          >
+            <Component {...pageProps} />
+          </MoralisProvider>
       </ThemeProvider>
     </React.Fragment>
   );
